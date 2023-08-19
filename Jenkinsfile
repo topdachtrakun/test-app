@@ -18,7 +18,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 3000:3000 nextjs-app:${env.BUILD_ID}'
+                sh 'docker run -p 3000:3000 nextjs-app:${env.BUILD_ID}'
             }
         }
     }
