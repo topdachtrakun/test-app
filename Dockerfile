@@ -16,7 +16,7 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
 # ENV PATH /app/node_modules/.bin:$PATH
 
