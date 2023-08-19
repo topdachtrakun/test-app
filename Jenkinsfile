@@ -18,7 +18,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'sudo docker images'
+                sh 'docker images'
                 // sh 'sudo docker run -d -p 3000:3000 test-app'
             }
         }
