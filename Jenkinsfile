@@ -8,11 +8,17 @@ pipeline {
             }
         }
         
+        stage('Build and Dockerize') {
+            steps {
+                script {
+                    docker.build("nextjs-app:${env.BUILD_ID}")
+                }
+            }
+        }
         
         stage('Deploy') {
             steps {
-                sh 'docker images'
-                // sh 'docker run -d -p 3000:3000 nextjs-app'
+                sh 'docker run -d -p 3000:3000 nextjs-app:${env.BUILD_ID}'
             }
         }
     }
