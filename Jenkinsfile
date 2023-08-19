@@ -11,8 +11,8 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                // sh 'sudo -S docker images'
-                sh 'docker run -d -p 3000:3000 nextjs-app'
+                sh 'docker images'
+                // sh 'docker run -d -p 3000:3000 nextjs-app'
             }
         }
     }
