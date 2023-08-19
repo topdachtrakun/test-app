@@ -1,17 +1,25 @@
 pipeline {
-  agent any
-  stages {
-    stage('Install Dependencies') {
-      steps {
-        sh 'npm install'
-      }
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Build and Dockerize') {
+            steps {
+                script {
+                    docker.build("nextjs-app:${env.BUILD_ID}")
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh 'docker run -d -p 3000:3000 nextjs-app:${env.BUILD_ID}'
+            }
+        }
     }
-
-    stage('Build') {
-      steps {
-        sh 'npm run dev'
-      }
-    }
-
-  }
 }
