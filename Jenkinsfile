@@ -20,7 +20,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'docker run -p 3000:3000 test-app'
+                sh 'docker run -p 3000:3000 test-app:${env.BUILD_ID}'
             }
         }
     }
