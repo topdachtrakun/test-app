@@ -8,13 +8,13 @@ pipeline {
             }
         }
         
-        stage('Build and Dockerize') {
-            steps {
-                script {
-                    docker.build("test-app")
-                }
-            }
-        }
+        // stage('Build and Dockerize') {
+        //     steps {
+        //         script {
+        //             docker.build("test-app")
+        //         }
+        //     }
+        // }
         
         stage('Deploy') {
             steps {
