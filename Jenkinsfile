@@ -17,9 +17,16 @@ pipeline {
                 }
             }
         }
+
+        stage('Echo Build ID') {
+            steps {
+                echo "BUILD_ID: ${env.BUILD_ID}"
+            }
+        }
         
         stage('Deploy') {
             steps {
+                echo ${env.BUILD_ID}
                 sh 'docker run -p 3000:3000 test-app:${env.BUILD_ID}'
             }
         }
