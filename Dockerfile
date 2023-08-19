@@ -1,27 +1,19 @@
-# FROM node:14
-
-# WORKDIR /app
-
-# COPY package*.json ./
-# RUN npm install
-
-# COPY . .
-
-# EXPOSE 3000
-
-# CMD ["npm", "start"]
-
-
 FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY . .
+
+# ENV NODE_ENV=production
 
 # ENV PATH /app/node_modules/.bin:$PATH
 
 RUN npm install
 
+RUN npm run build
+
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+
+
+CMD ["npm", "run", "start"]
