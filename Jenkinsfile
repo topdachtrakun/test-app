@@ -26,7 +26,6 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                echo ${env.BUILD_ID}
                 sh 'docker run -p 3000:3000 test-app:${env.BUILD_ID}'
             }
         }
