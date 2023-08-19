@@ -11,14 +11,15 @@ pipeline {
         stage('Build and Dockerize') {
             steps {
                 script {
-                    docker.build("test-app:${env.BUILD_ID}")
+                    docker.build("test-app")
                 }
             }
         }
         
         stage('Deploy') {
             steps {
-                sh 'sudo docker run -d -p 3000:3000 test-app:${env.BUILD_ID}'
+                sh 'sudo docker images'
+                // sh 'sudo docker run -d -p 3000:3000 test-app'
             }
         }
     }
