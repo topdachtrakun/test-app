@@ -13,7 +13,7 @@ pipeline {
         stage('Build and Dockerize') {
             steps {
                 script {
-                    docker.build("test-app:${env.BUILD_ID}")
+                    docker.build("test-app")
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'docker run -p 3000:3000 test-app:${env.BUILD_ID}'
+                sh 'docker run -p 3000:3000 test-app'
             }
         }
     }
